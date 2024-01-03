@@ -1,0 +1,4 @@
+user_service/db.sqlite3
+user_service/users/__pycache__
+user_service/user_service/__pycache__
+user_service/users/migrations/__pycache__
