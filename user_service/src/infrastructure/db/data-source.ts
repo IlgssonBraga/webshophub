@@ -1,17 +1,22 @@
-import "reflect-metadata"
+import "reflect-metadata";
 import { DataSource } from "typeorm"
-import { User } from "../../domain/user/models/User"
+import { User } from "../../domain/user/models/User";
+
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export const AppDataSource = new DataSource({
     type: "mysql",
-    host: "localhost",
-    port: 3306,
-    username: "userservice",
-    password: "userservicedb",
-    database: "userservicedb",
+    host: process.env.DB_HOST,
+    port: parseInt(process.env.DB_PORT as string),
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSOWRD,
+    database: process.env.DB_DATABASE,
     synchronize: false,
     logging: false,
     entities: [User],
-    migrations: [],
+    migrations: ["src/infrastructure/db/migrations/*.ts"],
     subscribers: [],
+    migrationsTableName: "migrations"
 })
