@@ -6,10 +6,10 @@ export class User {
     id: number
 
     @Column({ type: 'varchar', length: 255 })
-    firstName: string
+    first_name: string
 
     @Column({ type: 'varchar', length: 255 })
-    lastName: string
+    last_name: string
 
     @Column({ type: 'varchar', length: 255 })
     username: string
