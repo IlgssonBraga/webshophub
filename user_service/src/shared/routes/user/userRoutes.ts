@@ -1,11 +1,10 @@
-import {Router, Request, Response} from 'express';
+import { Router } from 'express';
+import { UserController } from '../../../domain/user/user.controller';
 
 const userRouter =  Router();
 
-userRouter.get('/users', (req:Request,res:Response) => {
-    res.json({
-        "message":"user route"
-    })
-});
+const userController = new UserController();
+
+userRouter.get('/users', userController.users);
 
 export default userRouter;

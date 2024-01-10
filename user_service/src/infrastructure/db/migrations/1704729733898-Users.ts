@@ -5,9 +5,9 @@ export class Users1704729733898 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(
             `CREATE TABLE users (
-                id INT AUTO_INCREMENT PRIMARY KEY,
-                firstName VARCHAR(255),
-                lastName VARCHAR(255),
+                id SERIAL PRIMARY KEY,
+                first_name VARCHAR(255),
+                last_name VARCHAR(255),
                 username VARCHAR(255),
                 password VARCHAR(255)
             )`,
