@@ -7,8 +7,8 @@
       "test": "echo \"Error: no test specified\" && exit 1",
       "dev": "npx ts-node-dev --pretty --respawn ./src/infrastructure/app.ts",
       "start": "ts-node src/index.ts",
-      "migration:run": "npx typeorm-ts-node-commonjs migration:run --dataSource ./src/infrastructure/db/data-source.ts",
-      "migration:revert": "npx typeorm-ts-node-commonjs migration:revert --dataSource ./src/infrastructure/db/data-source.ts",
+      "migration:run":"npx typeorm-ts-node-commonjs migration:run --dataSource ./src/infrastructure/db/data-source.ts",
+      "migration:revert":"npx typeorm-ts-node-commonjs migration:revert --dataSource ./src/infrastructure/db/data-source.ts",
       "migration:create": "npx typeorm migration:create ./src/infrastructure/db/migrations/migration"
    },
    "keywords": [],
@@ -18,7 +18,6 @@
       "dotenv": "^16.3.1",
       "express": "^4.18.2",
       "jsonwebtoken": "^9.0.2",
-      "pg": "^8.4.0",
       "reflect-metadata": "^0.1.13",
       "typeorm": "0.3.19"
    },
