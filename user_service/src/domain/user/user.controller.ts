@@ -1,11 +1,14 @@
 import { Request, Response } from 'express';
-import { UserService } from './user.service';
-
-const userService = new UserService;
+import { IUserService } from './DTOs/UserDTO';
 
 export class UserController {
+    private userService: IUserService;
+
+    constructor(userService: IUserService){
+        this.userService = userService
+    }
     async users(req:Request, res:Response){
-        const users = await userService.findAll();
+        const users = await this.userService.findAll();
         return res.json(users);
     }
 }

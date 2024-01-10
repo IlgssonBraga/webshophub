@@ -2,8 +2,9 @@ import "reflect-metadata";
 import express from 'express';
 import dotenv from 'dotenv';
 import routes from '../shared/routes/index';
-import { AppDataSource } from "./db/data-source"
-import {User} from '../domain/user/user.model'
+import { AppDataSource } from "./db/data-source";
+import {User} from '../domain/user/user.model';
+
 
 const app = express();
 
