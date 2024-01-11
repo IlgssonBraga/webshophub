@@ -6,7 +6,6 @@
    "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
       "dev": "npx ts-node-dev --pretty --respawn ./src/infrastructure/app.ts",
-      "start": "ts-node src/index.ts",
       "migration:run": "npx typeorm-ts-node-commonjs migration:run --dataSource ./src/infrastructure/db/data-source.ts",
       "migration:revert": "npx typeorm-ts-node-commonjs migration:revert --dataSource ./src/infrastructure/db/data-source.ts",
       "migration:create": "npx typeorm migration:create ./src/infrastructure/db/migrations/migration"
