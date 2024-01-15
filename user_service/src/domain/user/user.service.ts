@@ -5,5 +5,5 @@ export class UserService implements IUserService{
     public async findAll(): Promise<IUser[]> {
         const users = await userRepository.find();
         return users;
-    }
+    } 
 }
