@@ -34,6 +34,12 @@ export class UserController {
 
     public async store(req: Request, res: Response){ 
         const reqBody = req.body;
+        const findUser = await this.userService.findByUsername(req.body.username);
+        if(findUser){
+            return res.status(400).json({
+                error: "Username already exists"
+            });  
+        }
         const user = await this.userService.createUser(reqBody);
         return res.status(201).json(user);
     }
@@ -41,6 +47,22 @@ export class UserController {
     public async update(req: Request, res: Response){ 
         const reqBody = req.body;
         const { id } = req.params;
+        const findUserById = await this.userService.findById(parseInt(id));
+        if(!findUserById){
+            return res.status(404).json({
+                error: "User not found"
+            });  
+        }
+
+        if(req.body.username){
+            const findUserByUsername = await this.userService.findByUsername(req.body.username);
+            if(findUserByUsername && findUserByUsername.username != findUserById.username){
+                return res.status(400).json({
+                    error: "Username already exists"
+            });  
+        }   
+        }
+        
         const user = await this.userService.updateUser(reqBody,parseInt(id));
         return res.status(200).json(user);
     }

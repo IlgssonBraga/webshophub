@@ -24,6 +24,17 @@ export class UserService implements IUserService{
         return user;
     } 
 
+    public async findByUsername(username:string): Promise<IUser | null> {
+        const user = await userRepository.findOne({ where: { username },
+            select:{
+            id:true,
+            username: true,
+            first_name: true,
+            last_name: true,
+        } });
+        return user;
+    }
+
     public async deleteById(id:number): Promise<void> {
         await userRepository.delete(id);
     }

@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert  } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert, BeforeUpdate  } from "typeorm";
 import * as crypto from 'crypto';
 @Entity({ name: 'users' })
 export class User {
@@ -19,6 +19,7 @@ export class User {
 
 
     @BeforeInsert()
+    @BeforeUpdate()
     save() {
         const hash = crypto.createHash('sha256');
 
@@ -28,4 +29,14 @@ export class User {
         
         this.password = passwordHashed;
     }
+
+    // @BeforeUpdate()
+    // update() {
+    // const hash = crypto.createHash('sha256');
+
+    // hash.update(this.password);
+
+    // const passwordHashed = hash.digest('hex');
+    
+    // this.password = passwordHashed;
 }
